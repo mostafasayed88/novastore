@@ -1,0 +1,48 @@
+# Optional local deployment: API + both Streamlit UIs.
+#   docker compose up --build
+#   chat UI  -> http://localhost:8501
+#   admin UI -> http://localhost:8502
+#   API docs -> http://localhost:8000/docs
+#
+# Put your real GROQ_API_KEY in .env first (compose reads it automatically).
+
+services:
+  api:
+    build: .
+    env_file: .env
+    environment:
+      - USE_MOCK_LLM=${USE_MOCK_LLM:-false}
+    ports:
+      - "8000:8000"
+    volumes:
+      - novastore-data:/app/data
+
+  chat-ui:
+    build: .
+    env_file: .env
+    environment:
+      # Inside compose, the UI reaches the API via the service name.
+      - UI_API_URL=http://api:8000
+    command: >
+      sh -c "streamlit run src/novastore/ui/chat_app.py
+             --server.port 8501 --server.address 0.0.0.0"
+    ports:
+      - "8501:8501"
+    depends_on:
+      - api
+
+  admin-ui:
+    build: .
+    env_file: .env
+    environment:
+      - UI_API_URL=http://api:8000
+    command: >
+      sh -c "streamlit run src/novastore/ui/admin_app.py
+             --server.port 8502 --server.address 0.0.0.0"
+    ports:
+      - "8502:8502"
+    depends_on:
+      - api
+
+volumes:
+  novastore-data:

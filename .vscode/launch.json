@@ -1,0 +1,35 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "NovaStore: API server (uvicorn)",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "uvicorn",
+            "args": ["novastore.api.app:app", "--reload", "--port", "8000"],
+            "jinja": false,
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "NovaStore: Seed database",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/scripts/seed_db.py",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "NovaStore: Run evals",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/scripts/run_evals.py",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "NovaStore: CLI agent demo",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/scripts/run_agent_cli.py",
+            "console": "integratedTerminal"
+        }
+    ]
+}

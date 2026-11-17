@@ -1,0 +1,30 @@
+{
+  "description": "NovaStore classification eval cases. 'expected_slots' is a subset check: every key/value listed must match the classifier's slots exactly.",
+  "cases": [
+    {"id": "track_01", "message": "Where is order 5482?", "expected_intent": "order_tracking", "expected_slots": {"order_id": "5482"}},
+    {"id": "track_02", "message": "Track my order 5103 please", "expected_intent": "order_tracking", "expected_slots": {"order_id": "5103"}},
+    {"id": "track_03", "message": "Has my order shipped yet?", "expected_intent": "order_tracking"},
+    {"id": "track_04", "message": "أين طلبي 5482؟", "expected_intent": "order_tracking", "expected_language": "ar"},
+    {"id": "cancel_01", "message": "Cancel my order", "expected_intent": "cancel_order"},
+    {"id": "cancel_02", "message": "I want to cancel order 5001", "expected_intent": "cancel_order", "expected_slots": {"order_id": "5001"}},
+    {"id": "return_01", "message": "Can I return opened headphones?", "expected_intent": "return_request"},
+    {"id": "return_02", "message": "I need to send the speaker back, it's not what I ordered", "expected_intent": "return_request"},
+    {"id": "refund_01", "message": "I want a refund for order 5001", "expected_intent": "refund_request", "expected_slots": {"order_id": "5001"}},
+    {"id": "complaint_01", "message": "I received a damaged product, this is unacceptable!", "expected_intent": "complaint"},
+    {"id": "complaint_02", "message": "My laptop screen is broken and I'm furious", "expected_intent": "complaint"},
+    {"id": "tech_01", "message": "My iPhone won't turn on", "expected_intent": "tech_support"},
+    {"id": "tech_02", "message": "The device is not connecting to WiFi", "expected_intent": "tech_support"},
+    {"id": "avail_01", "message": "Is iPhone 15 available?", "expected_intent": "availability_check", "expected_slots": {"product_name": "iPhone 15"}},
+    {"id": "avail_02", "message": "Do you have Galaxy S24 in stock?", "expected_intent": "availability_check", "expected_slots": {"product_name": "Galaxy S24"}},
+    {"id": "ship_01", "message": "How long does shipping take to Cairo?", "expected_intent": "shipping_info"},
+    {"id": "ship_02", "message": "How long does delivery take to Alexandria?", "expected_intent": "shipping_info"},
+    {"id": "warranty_01", "message": "What's the warranty on the XPS 15?", "expected_intent": "warranty_question", "expected_slots": {"product_name": "Dell XPS 15"}},
+    {"id": "product_01", "message": "How much is the MacBook Air?", "expected_intent": "product_question", "expected_slots": {"product_name": "MacBook Air"}},
+    {"id": "product_02", "message": "What are the specs of the iPhone 15?", "expected_intent": "product_question", "expected_slots": {"product_name": "iPhone 15"}},
+    {"id": "sales_01", "message": "I want 30 Dell laptops for my company", "expected_intent": "sales_inquiry", "expected_slots": {"quantity": 30}},
+    {"id": "sales_02", "message": "Do you offer wholesale prices?", "expected_intent": "sales_inquiry"},
+    {"id": "handoff_01", "message": "I want to talk to a person", "expected_intent": "human_handoff"},
+    {"id": "unknown_01", "message": "مرحبا", "expected_intent": "unknown"},
+    {"id": "unknown_02", "message": "Thanks, that's all!", "expected_intent": "unknown"}
+  ]
+}
